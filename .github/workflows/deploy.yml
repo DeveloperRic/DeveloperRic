@@ -25,7 +25,7 @@ jobs:
           npx gatsby build
           ls -lh
       - name: Commit release ✒
-      - uses: EndBug/add-and-commit@v7
+        uses: EndBug/add-and-commit@v7
         with:
           # The arguments for the `git add` command (see the paragraph below for more info)
           # Default: '.'
