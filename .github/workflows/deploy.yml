@@ -3,9 +3,9 @@ name: deploy
 # Controls when the action will run. 
 on:
   push:
-    branches: [ gh-pages ]
+    branches: [ main ]
   pull_request:
-    branches: [ gh-pages, main ]
+    branches: [ main ]
 
 jobs:
   deploy-app:
@@ -24,6 +24,15 @@ jobs:
           cd app
           npx gatsby build
           ls -lh
+      - name: Commit release ✒
+      - uses: EndBug/add-and-commit@v7
+        with:
+          # The arguments for the `git add` command (see the paragraph below for more info)
+          # Default: '.'
+          add: 'public'
+          # The message for the commit
+          # Default: 'Commit from GitHub Actions (name of the workflow)'
+          message: 'Auto release commit (workflow: deploy)'
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@3.7.1
         with:
