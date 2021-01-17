@@ -28,22 +28,13 @@ jobs:
           cd app
           mkdir -p gh-pages
           cp -r public/* gh-pages/
+          pwd
           ls -lh gh-pages
-      - name: Commit release ✒
-        uses: EndBug/add-and-commit@v7
-        with:
-          # The arguments for the `git add` command (see the paragraph below for more info)
-          # Default: '.'
-          add: 'gh-pages'
-          branch: gh-pages
-          # The message for the commit
-          # Default: 'Commit from GitHub Actions (name of the workflow)'
-          message: 'Auto release commit (workflow: deploy)'
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@3.7.1
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_PAGES_TOKEN }}
           BRANCH: gh-pages # The branch the action should deploy to.
-          FOLDER: gh-pages # The folder the action should deploy.
+          FOLDER: ./gh-pages # The folder the action should deploy.
           CLEAN: true # Automatically remove deleted files from the deploy branch
           
