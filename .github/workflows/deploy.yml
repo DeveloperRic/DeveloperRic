@@ -23,13 +23,19 @@ jobs:
         run: |
           cd app
           npx gatsby build
-          ls -lh
+      - name: Copy build files 📂
+        run: |
+          cd app
+          mkdir -p gh-pages
+          cp -r public/* gh-pages/
+          ls -lh gh-pages
       - name: Commit release ✒
         uses: EndBug/add-and-commit@v7
         with:
           # The arguments for the `git add` command (see the paragraph below for more info)
           # Default: '.'
-          add: 'public'
+          add: 'gh-pages'
+          branch: gh-pages
           # The message for the commit
           # Default: 'Commit from GitHub Actions (name of the workflow)'
           message: 'Auto release commit (workflow: deploy)'
@@ -38,6 +44,6 @@ jobs:
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_PAGES_TOKEN }}
           BRANCH: gh-pages # The branch the action should deploy to.
-          FOLDER: public # The folder the action should deploy.
+          FOLDER: gh-pages # The folder the action should deploy.
           CLEAN: true # Automatically remove deleted files from the deploy branch
           
