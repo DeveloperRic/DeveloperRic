@@ -1,0 +1,33 @@
+name: deploy-main
+
+# Controls when the action will run. 
+on:
+  push:
+    branches: [ gh-pages ]
+  pull_request:
+    branches: [ gh-pages ]
+
+jobs:
+  build-app:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    environment: github-pages
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+      - name: Install packages 📦
+        run: |
+          cd app
+          npm clean-install
+      - name: Build 🛠
+        run: |
+          cd app
+          npx gatsby build
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@3.7.1
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_PAGES_TOKEN }}
+          BRANCH: gh-pages # The branch the action should deploy to.
+          FOLDER: public # The folder the action should deploy.
+          CLEAN: true # Automatically remove deleted files from the deploy branch
+          
