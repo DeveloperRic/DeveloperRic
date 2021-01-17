@@ -1,4 +1,4 @@
-name: deploy-main
+name: deploy
 
 # Controls when the action will run. 
 on:
@@ -8,7 +8,7 @@ on:
     branches: [ gh-pages, main ]
 
 jobs:
-  build-app:
+  deploy-app:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
     environment: github-pages
@@ -23,6 +23,7 @@ jobs:
         run: |
           cd app
           npx gatsby build
+          ls -lh
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@3.7.1
         with:
