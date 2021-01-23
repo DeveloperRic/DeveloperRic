@@ -27,8 +27,6 @@ jobs:
         run: |
           mkdir -p docs
           cp -r app/public/* docs/
-          pwd
-          ls -lh docs
       - name: Deploy 🚀
         uses: EndBug/add-and-commit@v7.0.0
         with:
@@ -36,4 +34,4 @@ jobs:
           # Name of the branch to use, if different from the one that triggered the workflow
           branch: gh-pages
           # The message for the commit
-          message: Auto-deploy from ${{env.GITHUB_REF}}
+          message: Auto-deploy for commit ${{ github.sha }} @ main
