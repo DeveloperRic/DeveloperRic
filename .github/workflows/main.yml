@@ -32,7 +32,7 @@ jobs:
         # only fails the audit if the results include a vulnerability with a level of moderate or higher
         run: |
           cd app
-          npm audit --audit-level=moderate >& {{secrets.SENSITIVE_LOG_CAPTURE_FILE}}
+          npm audit --audit-level=moderate &> {{secrets.SENSITIVE_LOG_CAPTURE_FILE}}
   build-app:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
