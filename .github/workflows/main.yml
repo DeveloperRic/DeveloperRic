@@ -24,15 +24,14 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-      - name: Install NPM packages
+      - name: Install NPM packages 📦
         run: |
           cd app
           npm clean-install
-      - name: Audit NPM packages
+      - name: Audit NPM packages ✔
         # only fails the audit if the results include a vulnerability with a level of moderate or higher
         run: |
           cd app
-          echo ${{secrets.SENSITIVE_LOG_CAPTURE_FILE}}
           npm audit --audit-level=moderate &> ${{secrets.SENSITIVE_LOG_CAPTURE_FILE}}
   build-app:
     # The type of runner that the job will run on
@@ -41,12 +40,12 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-      - name: Install NPM packages
+      - name: Install NPM packages 📦
         run: |
           cd app
           npm clean-install
       # Runs a single command using the runners shell
-      - name: Build app
+      - name: Build app 🛠
         run: |
           cd app
           npx gatsby build
