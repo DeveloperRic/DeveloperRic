@@ -1,4 +1,5 @@
 [![CI](https://github.com/DeveloperRic/DeveloperRic/workflows/CI/badge.svg)](https://github.com/DeveloperRic/DeveloperRic/actions?query=workflow%3ACI)
+![deploy](https://github.com/DeveloperRic/DeveloperRic/workflows/deploy/badge.svg)
 
 <p align="center">
   <a href="https://www.gatsbyjs.com/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter">
