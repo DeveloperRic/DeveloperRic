@@ -25,16 +25,15 @@ jobs:
           npx gatsby build
       - name: Copy build files 📂
         run: |
-          cd app
-          mkdir -p gh-pages
-          cp -r public/* gh-pages/
+          mkdir -p docs
+          cp -r app/public/* docs/
           pwd
-          ls -lh gh-pages
+          ls -lh docs
       - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@3.7.1
+        uses: EndBug/add-and-commit@v7.0.0
         with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_PAGES_TOKEN }}
-          BRANCH: gh-pages # The branch the action should deploy to.
-          FOLDER: ./gh-pages # The folder the action should deploy.
-          CLEAN: true # Automatically remove deleted files from the deploy branch
-          
+          add: docs
+          # Name of the branch to use, if different from the one that triggered the workflow
+          branch: gh-pages
+          # The message for the commit
+          message: Auto-deploy from {{env.GITHUB_REF}}
