@@ -1,0 +1,35 @@
+name: deploy
+
+# Controls when the action will run. 
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  deploy-app:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    environment: github-pages
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+      - name: Install packages 📦
+        run: |
+          cd app
+          npm clean-install
+      - name: Build 🛠
+        run: |
+          cd app
+          npx gatsby build
+      - name: Copy public files 📂
+        run: |
+          mkdir -p docs
+          cp -r app/public/* docs/
+      - name: Deploy 🚀
+        uses: EndBug/add-and-commit@v7.0.0
+        with:
+          add: docs
+          # Name of the branch to use, if different from the one that triggered the workflow
+          branch: gh-pages
+          # The message for the commit
+          message: Auto-deploy for commit ${{ github.sha }} @ main
