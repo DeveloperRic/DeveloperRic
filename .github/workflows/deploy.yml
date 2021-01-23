@@ -13,6 +13,10 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
+        with:
+          # The branch, tag or SHA to checkout. When checking out the repository that triggered a workflow,
+          # this defaults to the reference or SHA for that event.  Otherwise, uses the default branch.
+          ref: main
       - name: Install packages 📦
         run: |
           cd app
