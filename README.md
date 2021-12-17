@@ -3,10 +3,15 @@
 I'm a Computer Science student in Software Engineering at Carleton University.
 
 - 🔭 I’m currently working on
-  - An over-engineered RxJS-only virtual elevator
+  - An online multiplayer social game 🎲
+  - An over-engineered RxJS-only virtual elevator 🦄🚀🌕
   - An unbeatable Tetris clone (I have no idea how I'll do this but who cares!)
 - 🌱 I’m currently learning
   - Algorithm design, AI, end-to-end testng
+- 👯 I’m looking to collaborate on
+  - Web2 projects (who needs web3 amirite, jk maybe later)
+  - digital art, ML/AI, saas, projects some random people in nebraska have been thanklessley maintainig since 2003
+  - p.s. I'm looking for a post-grad job 🙋🏿‍♂️
 - 📫 How to reach me:
   - use those cute social buttons below my name :)
   - otherwise, you can take a look at [my website](https://victorolaitan.xyz)
