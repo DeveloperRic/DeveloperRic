@@ -1,0 +1,38 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    environment: default
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install NPM packages 📦
+        run: cd app && npm ci
+      - name: Audit NPM packages ✔
+        # only fails the audit if the results include a vulnerability with a level of moderate or higher
+        run: cd app && npm run audit
+  lint:
+    runs-on: ubuntu-latest
+    environment: default
+    steps:
+      - uses: actions/checkout@v2
+      - run: cd app && npm ci
+      - name: Lint code ✔
+        run: cd app && npm run lint
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install NPM packages 📦
+        run: cd app && npm ci
+      - name: Build app 🛠
+        run: cd app && npm run build

@@ -9,7 +9,7 @@ const _spotlight = {
   },
 }
 
-const app = new Vue({
+new Vue({
   el: '#app',
   data: {
     spotlight: _spotlight,
