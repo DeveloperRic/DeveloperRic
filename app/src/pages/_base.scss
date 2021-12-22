@@ -1,0 +1,61 @@
+$font-stack: Montserrat, Helvetica, sans-serif;
+
+* {
+  font-family: $font-stack;
+  box-sizing: border-box;
+}
+
+body {
+  height: fit-content;
+  margin: 0;
+}
+
+#app,
+section {
+  min-height: 100vh;
+}
+
+@media screen and (min-width: 480px) {
+  body {
+    font-size: 16px;
+  }
+}
+
+h1 {
+  font: 800 28px $font-stack;
+}
+
+section {
+  height: fit-content;
+  position: relative;
+
+  .background,
+  .foreground {
+    display: flex;
+    width: 100%;
+    height: fit-content;
+    min-height: 100vh;
+  }
+
+  .background {
+    position: absolute;
+    z-index: -1;
+    justify-content: flex-start;
+    align-items: flex-end;
+
+    .square {
+      width: 55vw;
+      height: 55vh;
+      background-color: rgba(238, 130, 238, 0.2);
+    }
+  }
+
+  .foreground {
+    padding: 5%;
+    z-index: 0;
+  }
+}
+
+#app {
+  overflow-y: auto;
+}

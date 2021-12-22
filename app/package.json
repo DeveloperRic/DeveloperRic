@@ -1,22 +1,58 @@
 {
   "name": "victor-olaitan",
-  "version": "3.0.0",
+  "version": "1.0.0",
   "private": true,
   "description": "Victor Olaitan",
   "author": "Victor Olaitan <victorolaitan.xyz>",
-  "keywords": [
-    "gatsby"
-  ],
+  "keywords": [],
   "scripts": {
-    "develop": "gatsby develop",
-    "start": "gatsby develop",
-    "build": "gatsby build",
-    "serve": "gatsby serve",
-    "clean": "gatsby clean"
+    "lint": "eslint src/**/*.ts",
+    "format": "npm run lint -- --fix",
+    "build": "npm run build:js && npm run build:html && npm run build:css && npm run build:assets",
+    "build:js": "tsc",
+    "build:html": "pug src/pages -o build",
+    "build:css": "sass src/pages:build",
+    "build:assets": "rm -rf build/assets && cp -r src/assets build",
+    "clean": "rm -rf build && mkdir build",
+    "start": "npm run clean && npm-watch",
+    "dev": "http-server -c-1 build"
   },
-  "dependencies": {
-    "gatsby": "^2.31.1",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+  "dependencies": {},
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.8.0",
+    "@typescript-eslint/parser": "^5.8.0",
+    "eslint": "^8.5.0",
+    "eslint-plugin-vue": "^8.2.0",
+    "http-server": "^14.0.0",
+    "npm-watch": "^0.11.0",
+    "pug-cli": "^1.0.0-alpha6",
+    "sass": "^1.45.1",
+    "typescript": "^4.5.4",
+    "vue": "^2.6.14"
+  },
+  "watch": {
+    "dev": {
+      "patterns": [
+        "package*.json",
+        "tsconfig.json"
+      ],
+      "extensions": "json"
+    },
+    "build:js": {
+      "patterns": ["src/vue"],
+      "extensions": "ts"
+    },
+    "build:html": {
+      "patterns": ["src/pages/*.pug"],
+      "extensions": "pug"
+    },
+    "build:css": {
+      "patterns": ["src/pages/*.scss"],
+      "extensions": "scss"
+    },
+    "build:assets": {
+      "patterns": ["src/assets"],
+      "extensions": "*"
+    }
   }
 }

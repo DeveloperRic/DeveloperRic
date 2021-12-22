@@ -1,0 +1,17 @@
+doctype html
+html
+  head
+  title="My first Vue app"
+  script(src="index.js" type="module")
+  body
+    div#app
+      section
+        .foreground(v-bind:style="bg")
+          | {{message}}
+          br
+          input(v-model="message")
+          br
+          button(v-on:click="reverseMessage") Reverse Message
+          div(v-if="visible") Hiii!!!
+          ol
+            li(v-for="todo in todos") {{ todo.text }}

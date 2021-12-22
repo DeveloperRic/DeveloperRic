@@ -1,0 +1,52 @@
+doctype html
+html
+  head
+  title="My first Vue app"
+  link(rel="stylesheet", href="index.css")
+  script(src="index.js" type="module")
+  body
+    div#app
+      section#fold
+        .background
+          .square
+        .foreground
+          .spotlight
+            .spotlight-text
+              h1 Victor Olaitan
+              p CS lover; BCs Software Engineering @ Carleton University
+            img(:src="spotlight.image.src", :alt="spotlight.image.alt")
+      section#exp
+        .background
+          h2 Stuff I've been up to
+          .square
+        .foreground
+          .events
+            .event(v-for="event in events", v-if="event.visible")
+              h3 {{event.title}}
+              .lines
+                .line(v-for="line in event.lines")
+                  span.emoji {{line.emoji}}
+                  | {{line.text}}
+      section#mentions
+        .foreground
+          .header
+            img(src="assets/Weather-06.svg", alt="Image of a star")
+            h2 Honourable Mentions
+          .mentions
+            a(v-for="tile in mentions", :href="tile.href")
+              .title(:class="{'title-border': tile.body.visible}")
+                img(:src="tile.image.src", :alt="tile.image.alt")
+                | {{tile.title}}
+              .body(v-if="tile.body.visible") {{tile.body.text}}
+      section#contact
+        .background
+          img(src="assets/footer-bg.jpg", alt="Footer graphic")
+          footer (c) Victor Olaitan 2021 🙂
+        .foreground
+          form
+            label(for="contactName") What's your name?
+            input#contactName(type="text")
+            label(for="contactMessage") What's up?
+            input#contactMessage(type="text")
+            .submit
+              input(type="submit", value="Send message")
