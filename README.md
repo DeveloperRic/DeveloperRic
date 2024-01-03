@@ -1,6 +1,6 @@
 ### Hello there! 👋🏿
 
-I'm a Computer Science student in Software Engineering at Carleton University.
+I'm a Computer Scientist (with a Software Engineering specialisation) working as a Software Engineer.
 
 - 🔭 I’m currently working on
   - An online multiplayer social game 🎲
